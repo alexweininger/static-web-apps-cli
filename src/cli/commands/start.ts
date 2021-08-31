@@ -84,7 +84,7 @@ export async function start(startContext: string, options: SWACLIConfig) {
       const funcBinary = "func";
       // serve the api if and only if the user provides a folder via the --api-location flag
       if (isApiLocationExistsOnDisk) {
-        serveApiCommand = `cd "${userWorkflowConfig.apiLocation}" && ${funcBinary} start --cors "*" --port ${options.apiPort}`;
+        serveApiCommand = `cd "${userWorkflowConfig.apiLocation}" && ${funcBinary} start --cors "*" --port ${options.apiPort} --javascript --language-worker -- "--inspect=9229"`;
       }
     }
   }
@@ -165,11 +165,18 @@ export async function start(startContext: string, options: SWACLIConfig) {
     "swa"
   );
 
-  await concurrently(concurrentlyCommands, {
+  console.log("Running concurrently");
+  // @ts-ignore
+  const conc = await concurrently(concurrentlyCommands, {
     restartTries: 0,
-    prefix: "name",
-  }).then(
+    prefix: "{pid} - {name}",
+  });
+  // @ts-ignore
+  console.log("Commands", conc.commands);
+  // @ts-ignore
+  conc.result.then(
     () => process.exit(),
     () => process.exit()
   );
+  console.log("Commands", conc);
 }
