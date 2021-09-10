@@ -62,8 +62,11 @@ export async function run(argv?: string[]) {
       DEFAULT_CONFIG.devserverTimeout
     )
 
-    .action(async (context: string = defaultStartContext, options: SWACLIConfig) => {
+    .option("--func-args <funcArgs>", "pass additional arguments to the func start command")
+
+    .action(async (context: string = `.${path.sep}`, options: SWACLIConfig) => {
       const verbose = cli.opts().verbose;
+
       // make sure the start command gets the right verbosity level
       process.env.SWA_CLI_DEBUG = verbose;
       if (verbose?.includes("silly")) {

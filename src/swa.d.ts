@@ -106,6 +106,7 @@ declare type SWACLIOptions = {
    * Time to wait(in ms) for the dev server to start
    */
   devserverTimeout?: number;
+  funcArgs?: string;
 };
 
 declare type SWACLIConfig = SWACLIOptions & GithubActionWorkflow;
