@@ -5,14 +5,14 @@
       "context": "./cypress/fixtures/static",
       "apiLocation": "./cypress/fixtures/api",
       "port": 1234,
-      "devServerTimeout": 10000,
+      "devserverTimeout": 10000,
       "verbose": "silly"
     },
     "app2": {
       "context": "./cypress/fixtures/static",
       "apiLocation": "./cypress/fixtures/api",
       "port": 4321,
-      "devServerTimeout": 10000,
+      "devserverTimeout": 10000,
       "verbose": "silly"
     }
   }

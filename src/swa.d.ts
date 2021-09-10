@@ -58,53 +58,23 @@ declare type GithubActionWorkflow = {
 };
 
 declare type SWACLIOptions = {
-  /**
-   * CLI port
-   */
   port?: number;
-  /**
-   * CLI host address
-   */
   host?: string;
-  /**
-   * API backend port
-   */
   apiPort?: number;
-  /**
-   * Serve the app and API over HTTPS
-   */
   ssl?: boolean;
   apiPrefix?: "api";
-  /**
-   * SSL certificate (.crt) to use for serving HTTPS
-   */
   sslCert?: string;
-  /**
-   * SSL key (.key) to use for serving HTTPS
-   */
   sslKey?: string;
   swaConfigFilename?: "staticwebapp.config.json";
   swaConfigFilenameLegacy?: "routes.json";
-  /**
-   * Location of the build output directory relative to the appLocation
-   */
   app?: string;
-  /**
-   * API folder or Azure Functions emulator address
-   */
   apiLocation?: string;
   build?: boolean;
   verbose?: string;
-  /**
-   * Run a command at startup
-   */
   run?: string;
   swaConfigLocation?: string;
   customUrlScheme?: string;
   overridableErrorCode?: number[];
-  /**
-   * Time to wait(in ms) for the dev server to start
-   */
   devserverTimeout?: number;
   funcArgs?: string;
 };
